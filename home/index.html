@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-theme-default="auto">
+<head>
+    <meta charset="utf-8" />
+    <title>Home | Grav</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+
+        <meta name="generator" content="GravCMS" />            <meta name="description" content="Grav&#x20;is&#x20;an&#x20;easy&#x20;to&#x20;use,&#x20;yet&#x20;powerful,&#x20;open&#x20;source&#x20;flat-file&#x20;CMS" />        
+    <link rel="icon" type="image/png" href="/user/themes/quark2/images/favicon.png" />
+    <link rel="canonical" href="http://grav2.test/" />
+
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="/user/themes/quark2/fonts/cal-sans/cal-sans-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/user/themes/quark2/fonts/inter/inter-latin.woff2" />
+
+            <style>
+      :root {
+        --q2-accent: #8428DF;
+        --q2-accent-contrast: #ffffff;
+        --q2-link: #8428DF;
+        --q2-focus-ring: color-mix(in oklab, #8428DF 45%, transparent);
+      }
+      :root[data-theme='dark'] {
+        --q2-accent: color-mix(in oklab, #8428DF 80%, white 20%);
+        --q2-accent-contrast: #ffffff;
+        --q2-link: color-mix(in oklab, #8428DF 75%, white 25%);
+        --q2-focus-ring: color-mix(in oklab, #8428DF 45%, transparent);
+      }
+    </style>
+    
+        <script>
+    (function () {
+      try {
+        var d = document.documentElement;
+        var stored = localStorage.getItem('quark2-theme');
+        var pref = stored || d.getAttribute('data-theme-default') || 'auto';
+        var isDark = pref === 'dark' || (pref === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        d.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        d.setAttribute('data-theme-preference', pref);
+        d.classList.toggle('dark', isDark);
+      } catch (e) {}
+    })();
+    </script>
+
+                                                    
+        
+    <link href="/user/themes/quark2/css/fonts.css" type="text/css" rel="stylesheet">
+<link href="/user/themes/quark2/css/blades.min.css" type="text/css" rel="stylesheet">
+<link href="/user/themes/quark2/css/theme.css" type="text/css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" type="text/css" rel="stylesheet">
+<link href="/user/themes/quark2/css/custom.css" type="text/css" rel="stylesheet">
+<link href="/user/plugins/github-markdown-alerts/assets/github-markdown-alerts.css" type="text/css" rel="stylesheet">
+<link href="/user/plugins/form/assets/form-styles.css" type="text/css" rel="stylesheet">
+<link href="/user/plugins/login/css/login.css" type="text/css" rel="stylesheet">
+<style>
+:root {
+    --gh-alert-note-border-color: #316dca;
+    --gh-alert-note-title-color: #316dca;
+    --gh-alert-tip-border-color: #347d39;
+    --gh-alert-tip-title-color: #347d39;
+    --gh-alert-important-border-color: #8256d0;
+    --gh-alert-important-title-color: #8256d0;
+    --gh-alert-warning-border-color: #c69026;
+    --gh-alert-warning-title-color: #c69026;
+    --gh-alert-caution-border-color: #c93c37;
+    --gh-alert-caution-title-color: #c93c37;
+}
+</style>
+
+    <script src="/user/themes/quark2/js/theme-toggle.js"></script>
+
+</head>
+<body id="top" class="title-center title-h1h2 header-fixed header-animated sticky-footer">
+    <div id="page-wrapper">
+            <header id="header" class="section">
+            <div class="container">
+                <nav class="navbar" aria-label="Primary">
+                    <div class="navbar-section logo">
+                        <a href="/" class="navbar-brand" aria-label="Grav" title="Grav">
+    <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" viewBox="0 0 504 140" clip-rule="evenodd"><path d="M235.83 71.56h-7.98c-1.2 0-2.2 1-2.2 2.2V89.1l-.15.13c-4.7 3.96-10.64 6.14-16.72 6.14-14.36 0-26.04-11.68-26.04-26.04s11.68-26.04 26.04-26.04c5.58 0 10.92 1.76 15.44 5.1.87.66 2.1.57 2.86-.2l5.7-5.7c.44-.44.67-1.05.63-1.68-.02-.62-.32-1.2-.82-1.6-6.76-5.35-15.2-8.3-23.8-8.3-21.18 0-38.42 17.23-38.42 38.4 0 21.2 17.24 38.42 38.42 38.42 10.93 0 21.4-4.7 28.7-12.9.35-.4.55-.93.55-1.47v-19.6c0-1.22-.98-2.2-2.2-2.2M502.8 34.44c-.4-.6-1.1-.98-1.84-.98h-8.7c-.87 0-1.66.52-2 1.32l-24.5 56.84-24.9-56.85c-.36-.8-1.15-1.3-2.02-1.3h-8.72c-.74 0-1.44.36-1.84.98-.4.62-.48 1.4-.17 2.1l30.2 68.85c.34.8 1.13 1.32 2 1.32h11c.88 0 1.67-.53 2.02-1.33l29.66-68.87c.3-.68.22-1.47-.2-2.1"/><path d="M388.68 34.77c-.35-.8-1.14-1.32-2-1.32h-11c-.88 0-1.67.53-2.02 1.33L344 103.64c-.3.68-.22 1.47.18 2.08.4.62 1.1 1 1.84 1h8.7c.86 0 1.66-.53 2-1.33l24.5-56.86 24.9 56.86c.36.8 1.15 1.32 2.02 1.32h8.72c.74 0 1.44-.38 1.84-1 .4-.62.47-1.4.17-2.1l-30.2-68.85zM309.2 81.52l.47-.22c8.68-4.2 14.28-13.1 14.28-22.67 0-13.88-11.3-25.18-25.17-25.18H266.9c-1.2 0-2.2 1-2.2 2.2v68.86c0 1.23 1 2.22 2.2 2.22h8c1.2 0 2.2-1 2.2-2.2V45.8h21.68c7.05 0 12.8 5.75 12.8 12.8 0 5.9-4 11-9.73 12.42-1.04.26-2.07.4-3.07.4h-7.98c-.83 0-1.6.46-1.96 1.2-.38.73-.3 1.62.2 2.3l22.6 30.87c.42.58 1.08.92 1.78.92h9.9c.84 0 1.6-.47 1.97-1.2.37-.75.3-1.64-.2-2.3l-15.9-21.7zM107.2 80.97c-7.26-4.8-11.4-8.85-15.02-16.1-2.47 4.97-8.24 12.37-17.96 18.2-4.86 15.1-27.96 44-35.43 39.9-2.22-1.2-2.64-2.8-2.15-4.45.54-4.13 9.08-13.62 9.08-13.62s.18 2 2.92 6.18c-3.6-11.2 5.96-25.03 8.5-29.73 3.98-1.27 4.27-6.4 4.27-6.4.26-7.9-3.28-13.63-6.7-17.05 2.46 3 3.25 7.54 3.37 11.7v.02c0 .47 0 .93 0 1.4-.12 3.43-1.16 8.18-3.38 8.18v.03c-2.28-.1-5.1.4-7.63 1.18l-5.6 1.34s2.98-.13 4.6 1.25c-1.8 2.9-5.78 6.53-10.22 8.58-6.45 3-8.3-2.96-5.03-6.84.8-.94 1.62-1.74 2.38-2.4-.5-.5-.8-1.2-.88-2.06 0 0 0 0 0-.02-.46-1.97-.2-4.54 2.6-8.62.54-.86 1.2-1.75 2-2.65.02-.04.04-.07.07-.1.03-.04.07-.08.1-.12.02-.02.04-.04.06-.06.2-.23.42-.45.64-.67 3.34-3.4 8.6-6.96 16.9-10.15C64.4 43.68 67.94 41 67.94 41c1.07-1.1 2.94-2.45 3.63-2.8-5.05-8.77-6.07-21.15-4.75-24.5-.1.2-.2.38-.3.57.5-1.14.83-1.5 1.34-2.1 1.38-1.64 6.06-2.5 7.74.96.9 1.84 1.06 4.23 1.03 6.02-3.7-.2-7.06 4.04-7.06 4.04s3.07-1.46 6.88-1.5c0 0 1 .9 2.28 2.56-1.7 3.2-4.52 10.02-2.5 17.16.35 1.4.86 2.62 1.5 3.65.02.05.04.1.07.14.05.07.1.13.14.2 3.37 5.06 9.54 5.66 9.54 5.66-2.9-1.45-5.27-3.76-6.8-6.56-.82-1.5-1.3-2.77-1.6-3.77-1.64-6.3.77-10 2.14-12.47 3.17-4.9 8.95-7.9 15.15-7.18 8.72 1 14.97 8.86 13.98 17.57-.6 5.32-3.78 9.72-8.15 12.12 1.05 2.84-.07 6.28-.07 6.28 2.64 3.32 2.76 5.23 2.67 7-3.36-.55-6.62 1.7-6.62 1.7s6.48-1.53 10.24 1.82c2.44 2.64 4.08 5 5.05 6.77 1.4 2.5 7.86 2.68 7.12 7.2-.74 4.5-5.68 4.53-13.4-.57M69.56 0C31.15 0 0 31.15 0 69.57c0 38.42 31.15 69.57 69.57 69.57 38.42 0 69.57-31.15 69.57-69.57C139.14 31.15 108 0 69.57 0M73.8 51.7c.8-.82.8-2.14 0-2.95-.82-.82-2.14-.82-2.95 0-.82.8-.82 2.13 0 2.94.8.8 2.13.8 2.95 0M66.45 53.15c-.82.8-.82 2.13 0 2.95.8.8 2.13.8 2.94 0 .8-.82.8-2.14 0-2.95-.82-.8-2.14-.8-2.95 0"/><path d="M79.23 54.23c-1.27-1.27-3.34-1.27-4.6 0l-2.72 2.7c-1.27 1.3-1.27 3.35 0 4.63l3 2.97c1.26 1.28 3.32 1.28 4.6 0l2.7-2.7c1.28-1.28 1.28-3.35 0-4.62l-2.97-2.97zM95.76 41.44c-2.15-2.57 1.87-7.25 4.4-4.46 4.64 5.15-2.25 7.04-4.4 4.46m9.24 2.7c3.45-6.56-1.42-10.4-4.77-13.53-5.36-5.03-10.7-7.2-16.8-.23-6.1 6.98-2.24 15.07 3.35 19.06 5.58 4 14.78 1.25 18.22-5.3"/></svg></a>
+                    </div>
+                    <div class="navbar-section desktop-menu">
+                        <div class="dropmenu">
+                                                                
+<ul class="navigation">
+                    <li>
+      <a href="/" class="active">
+                Home
+      </a>
+          </li>
+              <li>
+      <a href="/typography" class="">
+                Typography
+      </a>
+          </li>
+  
+</ul>
+                        
+                            </div>
+                    </div>
+                    <div class="navbar-section actions">
+                        <button type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-label="Toggle appearance"
+        title="Toggle appearance">
+        <i class="icon icon-sun   fa-solid fa-sun"   aria-hidden="true"></i>
+    <i class="icon icon-moon  fa-solid fa-moon"  aria-hidden="true"></i>
+    <i class="icon icon-auto  fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+    </button>
+                                            </div>
+                </nav>
+            </div>
+        </header>
+        <div class="mobile-menu">
+            <button type="button" class="button_container" id="toggle" aria-label="Open menu">
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
+            </button>
+        </div>
+    
+        
+        <main id="start">
+                    <div id="intro" class="module-anchor"></div>
+        
+<section class="section modular-text ">
+    <div class="container">
+        <div class="columns align-right">
+                            <div class="column" style="grid-column: 1 / -1;">
+                    <h1>Say Hello to Grav 2.0!</h1>
+<h2>installation successful...</h2>
+<p>Congratulations! You have installed the <strong>Base Grav 2.0 Package</strong> that provides a <strong>simple page</strong> and the new default <strong>Quark 2</strong> theme to get you started — built on <a href="https://blades.ninja/">Blades CSS</a> (the actively maintained successor to Pico CSS), Font Awesome 7, and a refined typographic system with light/dark/auto appearance.</p>
+<div class="md-alert md-alert--warning" dir="auto">
+<p class="md-alert-title"><svg class="octicon octicon-alert inline-block " viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Warning</p>
+<div class="md-alert-body">
+<p>If you see a <strong>404 Error</strong> when you click <code>Typography</code> in the menu, please refer to the <a href="http://learn.getgrav.org/troubleshooting/page-not-found">troubleshooting guide</a>.</p>
+</div>
+</div>
+<h3>Find out all about Grav</h3>
+<ul>
+<li>Learn about <strong>Grav</strong> by checking out our dedicated <a href="https://learn.getgrav.org">Learn Grav</a> site.</li>
+<li>Download <strong>plugins</strong>, <strong>themes</strong>, and Grav <strong>skeleton</strong> packages from the <a href="https://getgrav.org/downloads">Grav Downloads</a> page.</li>
+<li>Follow the <a href="https://getgrav.org/blog">Grav Development Blog</a> to keep up with the latest happenings in the Grav-verse.</li>
+<li>Browse the source on <a href="https://github.com/getgrav/grav">GitHub</a> and file issues or pull requests there.</li>
+</ul>
+<div class="md-alert md-alert--tip" dir="auto">
+<p class="md-alert-title"><svg class="octicon octicon-light-bulb inline-block " viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg> Tip</p>
+<div class="md-alert-body">
+<p>If you want a more <strong>full-featured</strong> base install, check out the <a href="https://getgrav.org/downloads"><strong>Skeleton</strong> packages available in the downloads</a> — several have already been updated for Grav 2.0.</p>
+</div>
+</div>
+<h3>Edit this Page</h3>
+<p>To edit this page, navigate to the folder you installed <strong>Grav</strong> into, and browse to the <code>user/pages/01.home</code> folder. Open modular modules (folders starting with <code>_</code>) in your <a href="https://learn.getgrav.org/basics/requirements">editor of choice</a>. You'll see the content of this page written in <a href="https://learn.getgrav.org/content/markdown">Markdown format</a>.</p>
+<h3>Create a New Page</h3>
+<p>Creating a new page is a simple affair in <strong>Grav</strong>. Follow these steps:</p>
+<ol>
+<li>
+<p>Navigate to your pages folder — <code>user/pages/</code> — and create a new folder. In this example, we'll use <a href="https://learn.getgrav.org/content/content-pages">explicit default ordering</a> and call the folder <code>03.mypage</code>.</p>
+</li>
+<li>
+<p>Launch your text editor and paste in the following sample content:</p>
+<pre><code>---
+title: My New Page
+---
+# My New Page!
+
+This is the body of **my new page** and I can easily use _Markdown_ syntax here.</code></pre>
+</li>
+<li>
+<p>Save this file in <code>user/pages/03.mypage/</code> as <code>default.md</code>. That tells <strong>Grav</strong> to render the page using the <strong>default</strong> template from Quark 2.</p>
+</li>
+<li>
+<p>Reload your browser to see your new page appear in the menu.</p>
+</li>
+</ol>
+<div class="md-alert md-alert--note" dir="auto">
+<p class="md-alert-title"><svg class="octicon octicon-info inline-block " viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p>
+<div class="md-alert-body">
+<p>The page will automatically show up in the menu after the <strong>Typography</strong> item. If you want a different label, add <code>menu: My Page</code> between the dashes in the front matter — this is the YAML header block, where all per-page options are configured.</p>
+</div>
+</div>
+<h3>What's new in Grav 2.0</h3>
+<p>Grav 2.0 is the biggest release in the project's history — a modernized core, a rebuilt admin, a fresh default theme, and an updated dependency stack. Most of what you already know still works, but everything underneath has been sharpened.</p>
+<ul>
+<li><strong>PHP 8.3+</strong> baseline, with a modernized core and typed internals throughout.</li>
+<li><strong>Symfony 7 + Twig 3</strong> dependency stack, bringing the latest framework improvements and long-term support.</li>
+<li><strong>Quark 2</strong> as the default theme — <a href="https://blades.ninja/">Blades CSS</a>, Font Awesome 7, auto/light/dark mode with <code>localStorage</code> persistence, locally-hosted Cal Sans + Inter fonts, and a refined Cal.com-inspired design system.</li>
+<li><strong>Admin 2.0</strong> — a fully API-powered SPA interface that's dramatically faster, more responsive, and decoupled from page renders. Navigation, form saves, and media operations no longer trigger full reloads.</li>
+<li><strong>Public REST API</strong> — the same endpoints that power Admin 2.0 are available to your own tools and integrations.</li>
+<li><strong>GitHub Markdown Alerts</strong> — the legacy <code>markdown-notices</code> plugin has been replaced by <code>github-markdown-alerts</code>, using the familiar <code>&gt; [!NOTE]</code> / <code>[!TIP]</code> / <code>[!IMPORTANT]</code> / <code>[!WARNING]</code> / <code>[!CAUTION]</code> syntax.</li>
+<li><strong>Refined caching and asset pipeline</strong> — cleaner invalidation, faster cold starts, and smarter dependency fingerprinting.</li>
+<li><strong>Hardened security defaults</strong> — tightened CSP headers, modern session handling, and improved input sanitization across core plugins.</li>
+<li><strong>Better developer ergonomics</strong> — stricter type hints, cleaner event signatures, and clearer deprecation paths.</li>
+</ul>
+<div class="md-alert md-alert--important" dir="auto">
+<p class="md-alert-title"><svg class="octicon octicon-report inline-block " viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p>
+<div class="md-alert-body">
+<p>Upgrading from Grav 1.x requires a migration. Follow the step-by-step guide at <a href="https://getgrav.org/migrate-to-2">getgrav.org/migrate-to-2</a> — it covers pre-flight checks, the migration itself, and what to verify afterward.</p>
+</div>
+</div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+            <div id="test" class="module-anchor"></div>
+        
+<section class="section modular-text ">
+    <div class="container">
+        <div class="columns left">
+                            <div class="column" style="grid-column: 1 / -1;">
+                    <p>This is test only on home</p>
+                </div>
+                    </div>
+    </div>
+</section>
+
+            </main>
+
+    </div>
+
+            <footer id="footer" class="section section-tight">
+    <div class="container">
+        <p>
+            <a href="https://getgrav.org">Grav</a>
+            was <i class="fa-solid fa-code" aria-hidden="true"></i>
+            with <i class="fa-solid fa-heart pulse" aria-hidden="true"></i>
+            by <a href="https://trilby.media">Trilby Media</a>.
+        </p>
+    </div>
+</footer>
+    
+        <div class="mobile-container">
+        <div class="overlay" id="overlay" role="dialog" aria-label="Menu">
+            <div class="mobile-logo">
+                <a href="/" class="navbar-brand" aria-label="Grav" title="Grav">
+    <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" viewBox="0 0 504 140" clip-rule="evenodd"><path d="M235.83 71.56h-7.98c-1.2 0-2.2 1-2.2 2.2V89.1l-.15.13c-4.7 3.96-10.64 6.14-16.72 6.14-14.36 0-26.04-11.68-26.04-26.04s11.68-26.04 26.04-26.04c5.58 0 10.92 1.76 15.44 5.1.87.66 2.1.57 2.86-.2l5.7-5.7c.44-.44.67-1.05.63-1.68-.02-.62-.32-1.2-.82-1.6-6.76-5.35-15.2-8.3-23.8-8.3-21.18 0-38.42 17.23-38.42 38.4 0 21.2 17.24 38.42 38.42 38.42 10.93 0 21.4-4.7 28.7-12.9.35-.4.55-.93.55-1.47v-19.6c0-1.22-.98-2.2-2.2-2.2M502.8 34.44c-.4-.6-1.1-.98-1.84-.98h-8.7c-.87 0-1.66.52-2 1.32l-24.5 56.84-24.9-56.85c-.36-.8-1.15-1.3-2.02-1.3h-8.72c-.74 0-1.44.36-1.84.98-.4.62-.48 1.4-.17 2.1l30.2 68.85c.34.8 1.13 1.32 2 1.32h11c.88 0 1.67-.53 2.02-1.33l29.66-68.87c.3-.68.22-1.47-.2-2.1"/><path d="M388.68 34.77c-.35-.8-1.14-1.32-2-1.32h-11c-.88 0-1.67.53-2.02 1.33L344 103.64c-.3.68-.22 1.47.18 2.08.4.62 1.1 1 1.84 1h8.7c.86 0 1.66-.53 2-1.33l24.5-56.86 24.9 56.86c.36.8 1.15 1.32 2.02 1.32h8.72c.74 0 1.44-.38 1.84-1 .4-.62.47-1.4.17-2.1l-30.2-68.85zM309.2 81.52l.47-.22c8.68-4.2 14.28-13.1 14.28-22.67 0-13.88-11.3-25.18-25.17-25.18H266.9c-1.2 0-2.2 1-2.2 2.2v68.86c0 1.23 1 2.22 2.2 2.22h8c1.2 0 2.2-1 2.2-2.2V45.8h21.68c7.05 0 12.8 5.75 12.8 12.8 0 5.9-4 11-9.73 12.42-1.04.26-2.07.4-3.07.4h-7.98c-.83 0-1.6.46-1.96 1.2-.38.73-.3 1.62.2 2.3l22.6 30.87c.42.58 1.08.92 1.78.92h9.9c.84 0 1.6-.47 1.97-1.2.37-.75.3-1.64-.2-2.3l-15.9-21.7zM107.2 80.97c-7.26-4.8-11.4-8.85-15.02-16.1-2.47 4.97-8.24 12.37-17.96 18.2-4.86 15.1-27.96 44-35.43 39.9-2.22-1.2-2.64-2.8-2.15-4.45.54-4.13 9.08-13.62 9.08-13.62s.18 2 2.92 6.18c-3.6-11.2 5.96-25.03 8.5-29.73 3.98-1.27 4.27-6.4 4.27-6.4.26-7.9-3.28-13.63-6.7-17.05 2.46 3 3.25 7.54 3.37 11.7v.02c0 .47 0 .93 0 1.4-.12 3.43-1.16 8.18-3.38 8.18v.03c-2.28-.1-5.1.4-7.63 1.18l-5.6 1.34s2.98-.13 4.6 1.25c-1.8 2.9-5.78 6.53-10.22 8.58-6.45 3-8.3-2.96-5.03-6.84.8-.94 1.62-1.74 2.38-2.4-.5-.5-.8-1.2-.88-2.06 0 0 0 0 0-.02-.46-1.97-.2-4.54 2.6-8.62.54-.86 1.2-1.75 2-2.65.02-.04.04-.07.07-.1.03-.04.07-.08.1-.12.02-.02.04-.04.06-.06.2-.23.42-.45.64-.67 3.34-3.4 8.6-6.96 16.9-10.15C64.4 43.68 67.94 41 67.94 41c1.07-1.1 2.94-2.45 3.63-2.8-5.05-8.77-6.07-21.15-4.75-24.5-.1.2-.2.38-.3.57.5-1.14.83-1.5 1.34-2.1 1.38-1.64 6.06-2.5 7.74.96.9 1.84 1.06 4.23 1.03 6.02-3.7-.2-7.06 4.04-7.06 4.04s3.07-1.46 6.88-1.5c0 0 1 .9 2.28 2.56-1.7 3.2-4.52 10.02-2.5 17.16.35 1.4.86 2.62 1.5 3.65.02.05.04.1.07.14.05.07.1.13.14.2 3.37 5.06 9.54 5.66 9.54 5.66-2.9-1.45-5.27-3.76-6.8-6.56-.82-1.5-1.3-2.77-1.6-3.77-1.64-6.3.77-10 2.14-12.47 3.17-4.9 8.95-7.9 15.15-7.18 8.72 1 14.97 8.86 13.98 17.57-.6 5.32-3.78 9.72-8.15 12.12 1.05 2.84-.07 6.28-.07 6.28 2.64 3.32 2.76 5.23 2.67 7-3.36-.55-6.62 1.7-6.62 1.7s6.48-1.53 10.24 1.82c2.44 2.64 4.08 5 5.05 6.77 1.4 2.5 7.86 2.68 7.12 7.2-.74 4.5-5.68 4.53-13.4-.57M69.56 0C31.15 0 0 31.15 0 69.57c0 38.42 31.15 69.57 69.57 69.57 38.42 0 69.57-31.15 69.57-69.57C139.14 31.15 108 0 69.57 0M73.8 51.7c.8-.82.8-2.14 0-2.95-.82-.82-2.14-.82-2.95 0-.82.8-.82 2.13 0 2.94.8.8 2.13.8 2.95 0M66.45 53.15c-.82.8-.82 2.13 0 2.95.8.8 2.13.8 2.94 0 .8-.82.8-2.14 0-2.95-.82-.8-2.14-.8-2.95 0"/><path d="M79.23 54.23c-1.27-1.27-3.34-1.27-4.6 0l-2.72 2.7c-1.27 1.3-1.27 3.35 0 4.63l3 2.97c1.26 1.28 3.32 1.28 4.6 0l2.7-2.7c1.28-1.28 1.28-3.35 0-4.62l-2.97-2.97zM95.76 41.44c-2.15-2.57 1.87-7.25 4.4-4.46 4.64 5.15-2.25 7.04-4.4 4.46m9.24 2.7c3.45-6.56-1.42-10.4-4.77-13.53-5.36-5.03-10.7-7.2-16.8-.23-6.1 6.98-2.24 15.07 3.35 19.06 5.58 4 14.78 1.25 18.22-5.3"/></svg></a>
+            </div>
+            <nav class="overlay-menu" aria-label="Mobile">
+                
+<ul class="tree navigation">
+                    <li>
+      <a href="/" class="active">
+                Home
+      </a>
+          </li>
+              <li>
+      <a href="/typography" class="">
+                Typography
+      </a>
+          </li>
+  
+</ul>
+            </nav>
+            <div style="margin-top:2rem;">
+                <button type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-label="Toggle appearance"
+        title="Toggle appearance">
+        <i class="icon icon-sun   fa-solid fa-sun"   aria-hidden="true"></i>
+    <i class="icon icon-moon  fa-solid fa-moon"  aria-hidden="true"></i>
+    <i class="icon icon-auto  fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+    <span style="margin-left:.5rem;">Appearance</span></button>
+            </div>
+        </div>
+    </div>
+    
+        <script src="/user/themes/quark2/js/site.js"></script>
+
+
+    </body>
+</html>
