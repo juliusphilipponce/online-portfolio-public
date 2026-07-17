@@ -78,4 +78,48 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+
+  class BackToTop {
+    constructor() {
+      this.button = document.getElementById('back-to-top');
+      if (this.button) {
+        this.progressFill = this.button.querySelector('.back-to-top-progress-fill');
+        this.circumference = 125.66;
+        this.initialise();
+      }
+    }
+
+    initialise() {
+      this.setEventHandlers();
+      this.updateProgress();
+    }
+
+    setEventHandlers() {
+      window.addEventListener('scroll', () => this.updateProgress(), { passive: true });
+      this.button.addEventListener('click', () => this.scrollToTop());
+    }
+
+    updateProgress() {
+      var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      this.button.classList.toggle('visible', y > 300);
+      if (this.progressFill) {
+        var docHeight = Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.clientHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        ) - window.innerHeight;
+        var progress = docHeight > 0 ? y / docHeight : 0;
+        var offset = this.circumference - (progress * this.circumference);
+        this.progressFill.style.strokeDashoffset = Math.max(0, Math.min(this.circumference, offset));
+      }
+    }
+
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  new BackToTop();
 })();
