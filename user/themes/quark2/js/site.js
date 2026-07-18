@@ -121,5 +121,176 @@
     }
   }
 
+  class FormAsyncModal {
+    constructor() {
+      this.init();
+    }
+
+    init() {
+      this.createModal();
+      this.setEventHandlers();
+    }
+
+    setEventHandlers() {
+      // Use event delegation for submit event
+      document.body.addEventListener('submit', (e) => {
+        const form = e.target;
+        if (form && form.id === 'contact') {
+          e.preventDefault(); // Prevent standard page reload
+          this.handleSubmit(form);
+        }
+      });
+
+      // Manage submit button state based on Turnstile verification status
+      const setupButtonState = () => {
+        const form = document.querySelector('form#contact, form[name="contact"]') || document.querySelector('form');
+        if (form) {
+          const turnstile = form.querySelector('[data-captcha-provider="turnstile"]');
+          const submitBtn = form.querySelector('.btn-primary, button[type="submit"], input[type="submit"], button');
+          if (turnstile && submitBtn) {
+            const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
+            const hasToken = tokenInput && tokenInput.value.trim() !== '';
+            const isAttrVerified = form.getAttribute('data-turnstile-verified') === 'true';
+            const isVerified = isAttrVerified || hasToken;
+
+            submitBtn.disabled = !isVerified;
+            if (!isVerified) {
+              submitBtn.style.opacity = '0.5';
+              submitBtn.style.cursor = 'not-allowed';
+              submitBtn.style.pointerEvents = 'none'; // Absolutely prevent clicks
+            } else {
+              submitBtn.style.opacity = '1';
+              submitBtn.style.cursor = 'pointer';
+              submitBtn.style.pointerEvents = 'auto'; // Re-enable clicks
+            }
+          }
+        }
+      };
+
+      const formObserver = new MutationObserver((mutations) => {
+        setupButtonState();
+      });
+
+      const observeForm = () => {
+        const form = document.querySelector('form#contact, form[name="contact"]') || document.querySelector('form');
+        if (form) {
+          setupButtonState();
+          formObserver.observe(form, { 
+            attributes: true, 
+            attributeFilter: ['data-turnstile-verified'],
+            childList: true,
+            subtree: true
+          });
+        }
+      };
+
+      observeForm();
+
+      // Continuous poll to detect programmatic token value updates instantly
+      setInterval(setupButtonState, 300);
+
+      // Observer in case form loads dynamically or after scripts run
+      const docObserver = new MutationObserver(() => {
+        const form = document.querySelector('form#contact, form[name="contact"]') || document.querySelector('form');
+        if (form) {
+          observeForm();
+          docObserver.disconnect();
+        }
+      });
+      docObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    createModal() {
+      if (document.querySelector('.form-async-modal-overlay')) return;
+
+      this.overlay = document.createElement('div');
+      this.overlay.className = 'form-async-modal-overlay';
+      this.overlay.innerHTML = `
+        <div class="form-async-modal">
+          <div class="form-async-spinner"></div>
+          <div class="form-async-message">Sending your message...</div>
+        </div>
+      `;
+      document.body.appendChild(this.overlay);
+    }
+
+    async handleSubmit(form) {
+      // Check if Turnstile is present and verified
+      const turnstileContainer = form.querySelector('[data-captcha-provider="turnstile"]');
+      const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
+      const hasToken = tokenInput && tokenInput.value.trim() !== '';
+      const isAttrVerified = form.getAttribute('data-turnstile-verified') === 'true';
+      const isVerified = isAttrVerified || hasToken;
+
+      if (turnstileContainer && !isVerified) {
+        this.overlay.classList.add('active');
+        this.overlay.querySelector('.form-async-spinner').style.display = 'none';
+        this.overlay.querySelector('.form-async-message').innerHTML = `
+          <div style="font-size: 3rem; color: #ffc107; margin-bottom: 0.5rem; line-height: 1;">⚠</div>
+          <div style="font-weight: 700; font-size: 1.2rem; color: #ffc107;">Security Check Required</div>
+          <div style="font-size: 0.95rem; color: var(--q2-text-light, #666666); margin-top: 0.5rem; line-height: 1.4;">Please solve the Cloudflare Turnstile challenge before sending.</div>
+          <button class="btn btn-primary" style="margin-top: 1.5rem; font-size: 0.875rem; padding: 0.5rem 1.5rem;" onclick="document.querySelector('.form-async-modal-overlay').classList.remove('active')">Go Back</button>
+        `;
+        return;
+      }
+
+      const buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+      buttons.forEach(btn => {
+        btn.disabled = true;
+      });
+
+      // Show spinner and reset message
+      this.overlay.classList.add('active');
+      this.overlay.querySelector('.form-async-spinner').style.display = 'block';
+      this.overlay.querySelector('.form-async-message').innerHTML = 'Sending your message...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.getAttribute('action') || window.location.href, {
+          method: form.getAttribute('method') || 'POST',
+          body: new URLSearchParams(formData),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+
+        if (response.ok) {
+          const responseText = await response.text();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = responseText;
+          const successMsg = tempDiv.querySelector('.form-message, .alert, .toast');
+          const messageText = successMsg ? successMsg.textContent.trim() : 'Thank you! Your message has been sent successfully.';
+
+          // Show success state
+          this.overlay.querySelector('.form-async-spinner').style.display = 'none';
+          this.overlay.querySelector('.form-async-message').innerHTML = `
+            <div style="font-size: 3rem; color: #28a745; margin-bottom: 0.5rem; line-height: 1;">✓</div>
+            <div style="font-weight: 700; font-size: 1.2rem; color: var(--q2-text, #111111);">Success!</div>
+            <div style="font-size: 0.95rem; color: var(--q2-text-light, #666666); margin-top: 0.5rem; line-height: 1.4;">${messageText}</div>
+            <button class="btn btn-primary" style="margin-top: 1.5rem; font-size: 0.875rem; padding: 0.5rem 1.5rem;" onclick="document.querySelector('.form-async-modal-overlay').classList.remove('active')">Close</button>
+          `;
+
+          form.reset();
+        } else {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } catch (error) {
+        this.overlay.querySelector('.form-async-spinner').style.display = 'none';
+        this.overlay.querySelector('.form-async-message').innerHTML = `
+          <div style="font-size: 3rem; color: #dc3545; margin-bottom: 0.5rem; line-height: 1;">✗</div>
+          <div style="font-weight: 700; font-size: 1.2rem; color: #dc3545;">Submission Failed</div>
+          <div style="font-size: 0.95rem; color: var(--q2-text-light, #666666); margin-top: 0.5rem; line-height: 1.4;">Could not send message. Please verify your SMTP config.</div>
+          <button class="btn btn-primary" style="margin-top: 1.5rem; font-size: 0.875rem; padding: 0.5rem 1.5rem;" onclick="document.querySelector('.form-async-modal-overlay').classList.remove('active')">Try Again</button>
+        `;
+      } finally {
+        buttons.forEach(btn => {
+          btn.disabled = false;
+        });
+      }
+    }
+  }
+
   new BackToTop();
+  new FormAsyncModal();
 })();
