@@ -253,7 +253,7 @@
         let fetchOptions = {};
 
         if (!isLocalhost && (!targetUrl || targetUrl === window.location.href || targetUrl === window.location.pathname)) {
-          targetUrl = 'https://formsubmit.co/ajax/jp.ponce.ai@gmail.com';
+          targetUrl = 'https://portfolio-contact.juliusphilipponce.workers.dev/';
           
           const cleanData = new FormData();
           const nameVal = form.querySelector('input[name*="name"], input[type="text"]')?.value || '';
@@ -263,15 +263,10 @@
           cleanData.append('name', nameVal);
           cleanData.append('email', emailVal);
           cleanData.append('message', messageVal);
-          cleanData.append('_subject', `[Portfolio] Message from ${nameVal || 'Visitor'}`);
-          cleanData.append('_captcha', 'false');
 
           fetchOptions = {
             method: 'POST',
-            body: cleanData,
-            headers: {
-              'Accept': 'application/json'
-            }
+            body: cleanData
           };
         } else {
           targetUrl = targetUrl || window.location.href;
