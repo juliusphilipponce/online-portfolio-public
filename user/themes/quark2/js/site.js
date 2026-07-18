@@ -268,6 +268,9 @@
             method: 'POST',
             body: cleanData
           };
+
+          console.log('[FormSubmit Debug] Live environment detected. Target Worker URL:', targetUrl);
+          console.log('[FormSubmit Debug] Sending payload:', { name: nameVal, email: emailVal, message: messageVal });
         } else {
           targetUrl = targetUrl || window.location.href;
           fetchOptions = {
@@ -278,20 +281,25 @@
               'X-Requested-With': 'XMLHttpRequest'
             }
           };
+          console.log('[FormSubmit Debug] Local environment detected. Target URL:', targetUrl);
         }
 
+        console.log('[FormSubmit Debug] Initiating fetch request to:', targetUrl);
         const response = await fetch(targetUrl, fetchOptions);
+        console.log('[FormSubmit Debug] Response status:', response.status, response.statusText);
 
         if (response.ok) {
           let messageText = 'Thank you! Your message has been sent successfully.';
           const contentType = response.headers.get('content-type');
           if (contentType && contentType.includes('application/json')) {
             const data = await response.json();
+            console.log('[FormSubmit Debug] Worker returned JSON response:', data);
             if (data.message) {
               messageText = data.message;
             }
           } else {
             const responseText = await response.text();
+            console.log('[FormSubmit Debug] Server returned text response:', responseText);
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = responseText;
             const successMsg = tempDiv.querySelector('.form-message, .alert, .toast');
@@ -299,6 +307,8 @@
               messageText = successMsg.textContent.trim();
             }
           }
+
+          console.log('[FormSubmit Debug] Form submission SUCCESS!');
 
           // Show success state
           this.overlay.querySelector('.form-async-spinner').style.display = 'none';
@@ -311,9 +321,12 @@
 
           form.reset();
         } else {
-          throw new Error(`HTTP ${response.status}`);
+          const errText = await response.text();
+          console.error('[FormSubmit Debug] Response failed with status:', response.status, 'Error body:', errText);
+          throw new Error(`HTTP ${response.status}: ${errText}`);
         }
       } catch (error) {
+        console.error('[FormSubmit Debug] Caught submission error:', error);
         this.overlay.querySelector('.form-async-spinner').style.display = 'none';
         this.overlay.querySelector('.form-async-message').innerHTML = `
           <div style="font-size: 3rem; color: #dc3545; margin-bottom: 0.5rem; line-height: 1;">✗</div>
