@@ -254,9 +254,21 @@
 
         if (!isLocalhost && (!targetUrl || targetUrl === window.location.href || targetUrl === window.location.pathname)) {
           targetUrl = 'https://formsubmit.co/ajax/jp.ponce.ai@gmail.com';
+          
+          const cleanData = new FormData();
+          const nameVal = form.querySelector('input[name*="name"], input[type="text"]')?.value || '';
+          const emailVal = form.querySelector('input[name*="email"], input[type="email"]')?.value || '';
+          const messageVal = form.querySelector('textarea')?.value || '';
+          
+          cleanData.append('name', nameVal);
+          cleanData.append('email', emailVal);
+          cleanData.append('message', messageVal);
+          cleanData.append('_subject', `[Portfolio] Message from ${nameVal || 'Visitor'}`);
+          cleanData.append('_captcha', 'false');
+
           fetchOptions = {
             method: 'POST',
-            body: formData,
+            body: cleanData,
             headers: {
               'Accept': 'application/json'
             }
