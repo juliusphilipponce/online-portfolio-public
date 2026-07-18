@@ -246,21 +246,52 @@
 
       try {
         const formData = new FormData(form);
-        const response = await fetch(form.getAttribute('action') || window.location.href, {
-          method: form.getAttribute('method') || 'POST',
-          body: new URLSearchParams(formData),
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'X-Requested-With': 'XMLHttpRequest'
-          }
-        });
+        const hostname = window.location.hostname;
+        const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.test');
+        
+        let targetUrl = form.getAttribute('action');
+        let fetchOptions = {};
+
+        if (!isLocalhost && (!targetUrl || targetUrl === window.location.href || targetUrl === window.location.pathname)) {
+          targetUrl = 'https://formsubmit.co/ajax/jp.ponce.ai@gmail.com';
+          fetchOptions = {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          };
+        } else {
+          targetUrl = targetUrl || window.location.href;
+          fetchOptions = {
+            method: form.getAttribute('method') || 'POST',
+            body: new URLSearchParams(formData),
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          };
+        }
+
+        const response = await fetch(targetUrl, fetchOptions);
 
         if (response.ok) {
-          const responseText = await response.text();
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = responseText;
-          const successMsg = tempDiv.querySelector('.form-message, .alert, .toast');
-          const messageText = successMsg ? successMsg.textContent.trim() : 'Thank you! Your message has been sent successfully.';
+          let messageText = 'Thank you! Your message has been sent successfully.';
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json();
+            if (data.message) {
+              messageText = data.message;
+            }
+          } else {
+            const responseText = await response.text();
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = responseText;
+            const successMsg = tempDiv.querySelector('.form-message, .alert, .toast');
+            if (successMsg) {
+              messageText = successMsg.textContent.trim();
+            }
+          }
 
           // Show success state
           this.overlay.querySelector('.form-async-spinner').style.display = 'none';
@@ -280,7 +311,7 @@
         this.overlay.querySelector('.form-async-message').innerHTML = `
           <div style="font-size: 3rem; color: #dc3545; margin-bottom: 0.5rem; line-height: 1;">✗</div>
           <div style="font-weight: 700; font-size: 1.2rem; color: #dc3545;">Submission Failed</div>
-          <div style="font-size: 0.95rem; color: var(--q2-text-light, #666666); margin-top: 0.5rem; line-height: 1.4;">Could not send message. Please verify your SMTP config.</div>
+          <div style="font-size: 0.95rem; color: var(--q2-text-light, #666666); margin-top: 0.5rem; line-height: 1.4;">Could not send message. Please try again later.</div>
           <button class="btn btn-primary" style="margin-top: 1.5rem; font-size: 0.875rem; padding: 0.5rem 1.5rem;" onclick="document.querySelector('.form-async-modal-overlay').classList.remove('active')">Try Again</button>
         `;
       } finally {
